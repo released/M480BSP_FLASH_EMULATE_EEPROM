@@ -3,7 +3,8 @@
  * @version  V1.00
  * @brief    Lightweight USB mass storage class driver
  *
- * @copyright (C) 2017 Nuvoton Technology Corp. All rights reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ * @copyright (C) 2017-2020 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 
 #include <stdio.h>
@@ -119,7 +120,7 @@ static void get_max_lun(MSC_T *msc)
     /* Issue GET MAXLUN MSC class command to get the maximum lun number                   */
     /*------------------------------------------------------------------------------------*/
     ret = usbh_ctrl_xfer(udev, REQ_TYPE_IN | REQ_TYPE_CLASS_DEV | REQ_TYPE_TO_IFACE,
-                         0xFE, 0, 0, 1, buff, &read_len, 200);
+                         0xFE, 0, 0, msc->iface->if_num, buff, &read_len, 200);
     if (ret < 0)
     {
         msc_debug_msg("Get Max Lun command failed! Assign 0...\n");

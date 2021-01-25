@@ -3,7 +3,8 @@
  * @version  V0.10
  * @brief    M480 series EADC driver header file
  *
- * @copyright (C) 2016 Nuvoton Technology Corp. All rights reserved.
+ * SPDX-License-Identifier: Apache-2.0
+ * @copyright (C) 2016-2020 Nuvoton Technology Corp. All rights reserved.
 *****************************************************************************/
 #ifndef __EADC_H__
 #define __EADC_H__
@@ -432,11 +433,12 @@ extern "C"
                          u32ModuleNum,\
                          u32Condition,\
                          u16CMPData,\
-                         u32MatchCount) ((eadc)->CMP[0] |=(((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
+                         u32MatchCount) ((eadc)->CMP[0] = (((eadc)->CMP[0] & ~(EADC_CMP_CMPSPL_Msk|EADC_CMP_CMPCOND_Msk|EADC_CMP_CMPDAT_Msk|EADC_CMP_CMPMCNT_Msk))|\
+                                                            (((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
                                                             (u32Condition) |\
                                                             ((u16CMPData) << EADC_CMP_CMPDAT_Pos)| \
                                                             (((u32MatchCount) - 1) << EADC_CMP_CMPMCNT_Pos)|\
-                                                            EADC_CMP_ADCMPEN_Msk))
+                                                            EADC_CMP_ADCMPEN_Msk)))
 
 /**
   * @brief Configure the comparator 1 and enable it.
@@ -457,11 +459,12 @@ extern "C"
                          u32ModuleNum,\
                          u32Condition,\
                          u16CMPData,\
-                         u32MatchCount) ((eadc)->CMP[1] |=(((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
+                         u32MatchCount) ((eadc)->CMP[1] = (((eadc)->CMP[1] & ~(EADC_CMP_CMPSPL_Msk|EADC_CMP_CMPCOND_Msk|EADC_CMP_CMPDAT_Msk|EADC_CMP_CMPMCNT_Msk))|\
+                                                            (((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
                                                             (u32Condition) |\
                                                             ((u16CMPData) << EADC_CMP_CMPDAT_Pos)| \
                                                             (((u32MatchCount) - 1) << EADC_CMP_CMPMCNT_Pos)|\
-                                                            EADC_CMP_ADCMPEN_Msk))
+                                                            EADC_CMP_ADCMPEN_Msk)))
 
 /**
   * @brief Configure the comparator 2 and enable it.
@@ -482,11 +485,12 @@ extern "C"
                          u32ModuleNum,\
                          u32Condition,\
                          u16CMPData,\
-                         u32MatchCount) ((eadc)->CMP[2] |=(((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
+                         u32MatchCount) ((eadc)->CMP[2] = (((eadc)->CMP[2] & ~(EADC_CMP_CMPSPL_Msk|EADC_CMP_CMPCOND_Msk|EADC_CMP_CMPDAT_Msk|EADC_CMP_CMPMCNT_Msk))|\
+                                                            (((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
                                                             (u32Condition) |\
                                                             ((u16CMPData) << EADC_CMP_CMPDAT_Pos)| \
                                                             (((u32MatchCount) - 1) << EADC_CMP_CMPMCNT_Pos)|\
-                                                            EADC_CMP_ADCMPEN_Msk))
+                                                            EADC_CMP_ADCMPEN_Msk)))
 
 /**
   * @brief Configure the comparator 3 and enable it.
@@ -507,11 +511,12 @@ extern "C"
                          u32ModuleNum,\
                          u32Condition,\
                          u16CMPData,\
-                         u32MatchCount) ((eadc)->CMP[3] |=(((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
+                         u32MatchCount) ((eadc)->CMP[3] = (((eadc)->CMP[3] & ~(EADC_CMP_CMPSPL_Msk|EADC_CMP_CMPCOND_Msk|EADC_CMP_CMPDAT_Msk|EADC_CMP_CMPMCNT_Msk))|\
+                                                            (((u32ModuleNum) << EADC_CMP_CMPSPL_Pos)|\
                                                             (u32Condition) |\
                                                             ((u16CMPData) << EADC_CMP_CMPDAT_Pos)| \
                                                             (((u32MatchCount) - 1) << EADC_CMP_CMPMCNT_Pos)|\
-                                                            EADC_CMP_ADCMPEN_Msk))
+                                                            EADC_CMP_ADCMPEN_Msk)))
 
 /**
   * @brief Enable the compare window mode.
