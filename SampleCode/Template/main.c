@@ -94,6 +94,7 @@ void Emulate_EEPROM_WriteTest(void)
     SYS_UnlockReg();
     FMC_Open();
 	
+    FMC_ENABLE_AP_UPDATE();
 	for (i = 0 ; i < DATA_FLASH_AMOUNT; i ++)
 	{
 		Write_Data(i%DATA_FLASH_AMOUNT, incr_base + (cnt++) );
@@ -101,6 +102,7 @@ void Emulate_EEPROM_WriteTest(void)
 
 	incr_base++;	//incr_base += 0x10;
 
+    FMC_DISABLE_AP_UPDATE();
     FMC_Close();
     SYS_LockReg();
 }
